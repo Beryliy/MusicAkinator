@@ -15,4 +15,14 @@ object NetworkModule {
     @JvmStatic
     fun provideOkhttp(): OkHttpClient = OkHttpClient.Builder().build()
 
+    @Provides
+    @Singleton
+    @JvmStatic
+    fun provideAuddIoRetrofit(okHttpClient: OkHttpClient): Retrofit {
+        return Retrofit.Builder()
+            .baseUrl(BuildConfig.AUDDIO_BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(okHttpClient)
+            .build()
+    }
 }
