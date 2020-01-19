@@ -1,7 +1,9 @@
-package com.fourcore.musicakinator.di
+package com.fourcore.musicakinator.di.component
 
 import android.app.Application
 import com.fourcore.musicakinator.MusicAkinatorApp
+import com.fourcore.musicakinator.di.module.AppModule
+import com.fourcore.musicakinator.di.module.NetworkModule
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjectionModule
@@ -11,7 +13,8 @@ import javax.inject.Singleton
 
 @Singleton
 @Component(modules = [AndroidInjectionModule::class,
-    AppModule::class
+    AppModule::class,
+    NetworkModule::class
 ])
 interface AppComponent: AndroidInjector<DaggerApplication> {
     @Component.Builder
