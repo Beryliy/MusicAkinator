@@ -1,4 +1,4 @@
-package com.fourcore.musicakinator.network
+package com.fourcore.musicakinator.network.service
 
 import AuddIOResponse
 import retrofit2.http.GET
