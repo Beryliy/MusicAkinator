@@ -1,6 +1,7 @@
 package com.fourcore.musicakinator.di.module
 
 import com.fourcore.musicakinator.BuildConfig
+import com.fourcore.musicakinator.network.service.FindLyricsService
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -27,4 +28,9 @@ object NetworkModule {
             .client(okHttpClient)
             .build()
     }
+
+    @Provides
+    @Singleton
+    @JvmStatic
+    fun provideFindLyricsService(retrofit: Retrofit) = retrofit.create(FindLyricsService::class.java)
 }
