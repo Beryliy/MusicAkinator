@@ -1,4 +1,4 @@
-package com.fourcore.musicakinator.di.module
+package com.fourcore.musicakinator.di.component
 
 import android.app.Application
 import android.content.Context
@@ -7,7 +7,7 @@ import dagger.Provides
 import javax.inject.Singleton
 
 @Module
-object AppModule {
+object AppProvideModule {
     @Singleton
     @JvmStatic
     @Provides
