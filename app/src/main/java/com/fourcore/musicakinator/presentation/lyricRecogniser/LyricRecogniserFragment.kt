@@ -1,4 +1,4 @@
-package com.fourcore.musicakinator.presentation
+package com.fourcore.musicakinator.presentation.lyricRecogniser
 
 
 import android.os.Bundle
