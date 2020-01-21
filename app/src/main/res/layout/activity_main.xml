@@ -18,6 +18,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
 
         app:defaultNavHost="true"
-        app:nav_graph="@navigation/navigation_graph"/>
+        app:navGraph="@navigation/navigation_graph"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
