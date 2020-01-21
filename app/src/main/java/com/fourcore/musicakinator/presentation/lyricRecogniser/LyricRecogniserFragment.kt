@@ -7,8 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.FragmentNavigatorExtras
 
 import com.fourcore.musicakinator.R
 import com.fourcore.musicakinator.databinding.FragmentLyricRecogniserBinding
@@ -40,5 +42,10 @@ class LyricRecogniserFragment : BaseFragment() {
         databinding.viewModel = viewModel
         databinding.lyricRecogniserData = viewModel.lyricRecogniserData
         return databinding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel.songLiveData.observe(this, Observer {})
     }
 }
