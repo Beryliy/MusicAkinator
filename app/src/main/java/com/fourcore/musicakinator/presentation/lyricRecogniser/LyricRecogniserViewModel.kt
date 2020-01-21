@@ -5,5 +5,7 @@ import com.fourcore.musicakinator.presentation.BaseViewModel
 import javax.inject.Inject
 
 @FragmentScope
-class LyricRecogniserViewModel @Inject constructor(): BaseViewModel() {
+class LyricRecogniserViewModel @Inject constructor(
+    val lyricRecogniserData: LyricRecogniserData
+): BaseViewModel() {
 }
