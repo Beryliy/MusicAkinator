@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="width_scalable">0dp</dimen>
+    <dimen name="size_scalable">0dp</dimen>
     <dimen name="padding_side_layout_default">16dp</dimen>
     <dimen name="padding_top_layout_default">16dp</dimen>
     <dimen name="padding_bottom_layout_default">20dp</dimen>
