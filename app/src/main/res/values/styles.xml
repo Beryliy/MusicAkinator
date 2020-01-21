@@ -8,4 +8,12 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="DefaultScreen">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:paddingStart">@dimen/padding_side_layout_default</item>
+        <item name="android:paddingEnd">@dimen/padding_side_layout_default</item>
+        <item name="android:paddingTop">@dimen/padding_top_layout_default</item>
+        <item name="android:paddingBottom">@dimen/padding_bottom_layout_default</item>
+    </style>
 </resources>
