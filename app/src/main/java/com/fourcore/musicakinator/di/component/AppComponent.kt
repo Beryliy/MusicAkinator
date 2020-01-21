@@ -2,6 +2,8 @@ package com.fourcore.musicakinator.di.component
 
 import android.app.Application
 import com.fourcore.musicakinator.MusicAkinatorApp
+import com.fourcore.musicakinator.di.builders.ActivityBuilder
+import com.fourcore.musicakinator.di.builders.LyricRecogniserFragmentBuilder
 import com.fourcore.musicakinator.di.module.NetworkModule
 import dagger.BindsInstance
 import dagger.Component
@@ -15,7 +17,9 @@ import javax.inject.Singleton
     AndroidSupportInjectionModule::class,
     AppProvideModule::class,
     AppBindModule::class,
-    NetworkModule::class
+    NetworkModule::class,
+    ActivityBuilder::class,
+    LyricRecogniserFragmentBuilder::class
 ])
 interface AppComponent: AndroidInjector<DaggerApplication> {
     @Component.Builder
