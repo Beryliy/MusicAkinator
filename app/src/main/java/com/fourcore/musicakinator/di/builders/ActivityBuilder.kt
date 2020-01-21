@@ -1,6 +1,6 @@
 package com.fourcore.musicakinator.di.builders
 
-import com.fourcore.musicakinator.MainActivity
+import com.fourcore.musicakinator.presentation.MainActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
