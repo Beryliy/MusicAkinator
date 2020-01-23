@@ -12,7 +12,7 @@ object AppProvideModule {
     @Singleton
     @JvmStatic
     @Provides
-    fun provideContext(application: Application) = application
+    fun provideContext(application: Application): Context = application
 
     @Singleton
     @JvmStatic
