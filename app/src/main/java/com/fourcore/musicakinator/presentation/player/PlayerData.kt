@@ -21,4 +21,11 @@ class PlayerData @Inject constructor(): BaseObservable() {
         field = value
         notifyPropertyChanged(BR.artist)
     }
+
+    @Bindable
+    var albumCoverUrl = ""
+    set(value) {
+        field = value
+        notifyPropertyChanged(BR.albumCoverUrl)
+    }
 }

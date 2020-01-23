@@ -12,6 +12,7 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         style="@style/DefaultScreen"
+        android:background="@android:color/black"
         tools:context=".presentation.player.PlayerFragment"
         tools:background="@android:color/black">
 
@@ -19,6 +20,7 @@
             android:layout_width="@dimen/size_scalable"
             android:layout_height="@dimen/size_scalable"
             android:id="@+id/albumsCoverIv"
+            app:imageUrl="@{playerData.albumCoverUrl}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
