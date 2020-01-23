@@ -4,6 +4,7 @@ import android.app.Application
 import com.fourcore.musicakinator.MusicAkinatorApp
 import com.fourcore.musicakinator.di.builders.ActivityBuilder
 import com.fourcore.musicakinator.di.builders.FragmentBuilder
+import com.fourcore.musicakinator.di.module.ApiModule
 import com.fourcore.musicakinator.di.module.app.AppBindModule
 import com.fourcore.musicakinator.di.module.app.AppProvideModule
 import com.fourcore.musicakinator.di.module.NetworkModule
@@ -20,6 +21,7 @@ import javax.inject.Singleton
     AppProvideModule::class,
     AppBindModule::class,
     NetworkModule::class,
+    ApiModule::class,
     ActivityBuilder::class,
     FragmentBuilder::class
 ])
