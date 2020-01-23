@@ -4,16 +4,16 @@
     <data>
         <variable
             name="viewModel"
-            type="com.fourcore.musicakinator.presentation.lyricRecogniser.LyricsRecogniserViewModel" />
+            type="com.fourcore.musicakinator.presentation.game.lyricRecogniser.LyricsRecogniserViewModel" />
         <variable
             name="lyricRecogniserData"
-            type="com.fourcore.musicakinator.presentation.lyricRecogniser.LyricRecogniserData" />
+            type="com.fourcore.musicakinator.presentation.game.lyricRecogniser.LyricRecogniserData" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         style="@style/DefaultScreen"
-        tools:context=".presentation.lyricRecogniser.LyricRecogniserFragment">
+        tools:context=".presentation.game.lyricRecogniser.LyricRecogniserFragment">
 
         <EditText
             android:layout_width="match_parent"

@@ -1,4 +1,4 @@
-package com.fourcore.musicakinator.presentation.player
+package com.fourcore.musicakinator.presentation.game.player
 
 
 import android.content.Context
@@ -11,15 +11,12 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
 import com.deezer.sdk.model.PlayableEntity
-import com.deezer.sdk.model.Track
 import com.deezer.sdk.player.TrackPlayer
 import com.deezer.sdk.player.event.PlayerWrapperListener
 
 import com.fourcore.musicakinator.R
 import com.fourcore.musicakinator.databinding.FragmentPlayerBinding
-import com.fourcore.musicakinator.global.util.setImage
 import dagger.android.support.AndroidSupportInjection
-import kotlinx.android.synthetic.main.fragment_player.*
 import java.lang.Exception
 import javax.inject.Inject
 

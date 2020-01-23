@@ -3,17 +3,17 @@
     <data>
         <variable
             name="viewModel"
-            type="com.fourcore.musicakinator.presentation.player.PlayerViewModel" />
+            type="com.fourcore.musicakinator.presentation.game.player.PlayerViewModel" />
         <variable
             name="playerData"
-            type="com.fourcore.musicakinator.presentation.player.PlayerData" />
+            type="com.fourcore.musicakinator.presentation.game.player.PlayerData" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         style="@style/DefaultScreen"
         android:background="@android:color/black"
-        tools:context=".presentation.player.PlayerFragment"
+        tools:context=".presentation.game.player.PlayerFragment"
         tools:background="@android:color/black">
 
         <ImageView

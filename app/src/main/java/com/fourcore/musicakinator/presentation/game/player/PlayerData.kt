@@ -1,4 +1,4 @@
-package com.fourcore.musicakinator.presentation.player
+package com.fourcore.musicakinator.presentation.game.player
 
 import androidx.annotation.DrawableRes
 import androidx.databinding.BaseObservable

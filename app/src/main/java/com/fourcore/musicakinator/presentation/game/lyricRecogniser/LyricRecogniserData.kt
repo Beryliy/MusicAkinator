@@ -1,4 +1,4 @@
-package com.fourcore.musicakinator.presentation.lyricRecogniser
+package com.fourcore.musicakinator.presentation.game.lyricRecogniser
 
 import androidx.databinding.BaseObservable
 import androidx.databinding.Bindable
