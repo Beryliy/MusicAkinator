@@ -48,6 +48,7 @@ dependencies {
     def navigation_version = '2.1.0'
     def lifecycle_version = '1.1.1'
     def databinding_version = '3.1.4'
+    def glide_version = '4.11.0'
 
     //core
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -80,6 +81,9 @@ dependencies {
     kapt "com.android.databinding:compiler:$databinding_version"
     //deezer
     implementation project(':deezer-sdk-0.11.2')
+    //glide
+    implementation "com.github.bumptech.glide:glide:$glide_version"
+    annotationProcessor "com.github.bumptech.glide:compiler:$glide_version"
 
     //tests
     testImplementation 'junit:junit:4.12'
