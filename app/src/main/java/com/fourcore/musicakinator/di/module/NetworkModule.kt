@@ -1,5 +1,6 @@
 package com.fourcore.musicakinator.di.module
 
+import com.deezer.sdk.player.networkcheck.WifiAndMobileNetworkStateChecker
 import com.fourcore.musicakinator.BuildConfig
 import com.fourcore.musicakinator.network.service.FindLyricsService
 import dagger.Module
@@ -33,4 +34,9 @@ object NetworkModule {
     @Singleton
     @JvmStatic
     fun provideFindLyricsService(retrofit: Retrofit) = retrofit.create(FindLyricsService::class.java)
+
+    @Provides
+    @Singleton
+    @JvmStatic
+    fun provideNetworkStateChecker() = WifiAndMobileNetworkStateChecker()
 }
