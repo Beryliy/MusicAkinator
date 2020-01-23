@@ -18,13 +18,12 @@
 
         <ImageView
             android:layout_width="@dimen/size_scalable"
-            android:layout_height="@dimen/size_scalable"
+            android:layout_height="wrap_content"
             android:id="@+id/albumsCoverIv"
             app:imageUrl="@{playerData.albumCoverUrl}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <TextView
             style="@style/Title"
@@ -44,9 +43,12 @@
             app:layout_constraintStart_toStartOf="parent"
             tools:text="Five fingers death"/>
         
-        <Button
+        <ImageButton
             style="@style/RoundButton"
             android:id="@+id/playerB"
+            android:backgroundTint="@color/orange"
+            android:src="@{playerData.playerButtonIconResource}"
+            android:onClick="@{() -> viewModel.playerAct()}"
             app:layout_constraintTop_toTopOf="@id/contentLimiterGl"
             app:layout_constraintEnd_toEndOf="parent"/>
 
