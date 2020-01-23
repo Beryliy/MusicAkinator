@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.FragmentNavigatorExtras
+import androidx.navigation.fragment.findNavController
 
 import com.fourcore.musicakinator.R
 import com.fourcore.musicakinator.databinding.FragmentLyricRecogniserBinding
@@ -46,6 +47,12 @@ class LyricRecogniserFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.songLiveData.observe(this, Observer {})
+        viewModel.songLiveData.observe(this, Observer {
+            val action = LyricRecogniserFragmentDirections.actionLyricRecogniserFragmentToPlayerFragment(
+                it.title,
+                it.artist
+            )
+            findNavController().navigate(action)
+        })
     }
 }

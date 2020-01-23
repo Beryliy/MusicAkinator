@@ -29,5 +29,12 @@
         android:id="@+id/playerFragment"
         android:name="com.fourcore.musicakinator.presentation.player.PlayerFragment"
         android:label="fragment_player"
-        tools:layout="@layout/fragment_player" />
+        tools:layout="@layout/fragment_player">
+        <argument
+            android:name="trackName"
+            app:argType="string"/>
+        <argument
+            android:name="artist"
+            app:argType="string"/>
+    </fragment>
 </navigation>
