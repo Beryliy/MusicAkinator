@@ -10,10 +10,13 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
+import com.deezer.sdk.model.Track
 
 import com.fourcore.musicakinator.R
 import com.fourcore.musicakinator.databinding.FragmentPlayerBinding
+import com.fourcore.musicakinator.global.util.setImage
 import dagger.android.support.AndroidSupportInjection
+import kotlinx.android.synthetic.main.fragment_player.*
 import javax.inject.Inject
 
 class PlayerFragment : Fragment() {
@@ -43,8 +46,6 @@ class PlayerFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.trackLiveData.observe(this, Observer {
-
-        })
+        viewModel.findTrack(args.trackName, args.artist)
     }
 }

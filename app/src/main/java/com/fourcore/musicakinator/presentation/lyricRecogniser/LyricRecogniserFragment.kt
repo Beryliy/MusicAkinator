@@ -10,7 +10,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 
 import com.fourcore.musicakinator.R
@@ -21,7 +20,7 @@ import javax.inject.Inject
 
 class LyricRecogniserFragment : BaseFragment() {
     @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
-    lateinit var viewModel: LyricRecogniserViewModel
+    lateinit var viewModel: LyricsRecogniserViewModel
 
     override fun onAttach(context: Context) {
         AndroidSupportInjection.inject(this)
@@ -33,7 +32,7 @@ class LyricRecogniserFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View? {
         viewModel = ViewModelProviders.of(this, viewModelFactory)
-            .get(LyricRecogniserViewModel::class.java)
+            .get(LyricsRecogniserViewModel::class.java)
         val databinding = DataBindingUtil.inflate<FragmentLyricRecogniserBinding>(
             inflater,
             R.layout.fragment_lyric_recogniser,
