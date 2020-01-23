@@ -6,6 +6,8 @@ import com.deezer.sdk.network.connect.DeezerConnect
 import com.deezer.sdk.network.request.DeezerRequestFactory
 import com.deezer.sdk.network.request.SearchResultOrder
 import com.deezer.sdk.network.request.event.JsonRequestListener
+import com.fourcore.musicakinator.R
+import com.fourcore.musicakinator.SingleLiveEvent
 import com.fourcore.musicakinator.di.FragmentScope
 import com.fourcore.musicakinator.presentation.BaseViewModel
 import java.lang.Exception
@@ -16,7 +18,10 @@ class PlayerViewModel @Inject constructor(
     val deezerConnect: DeezerConnect,
     val playerData: PlayerData
 ): BaseViewModel() {
-
+    lateinit var track: Track
+    val trackLiveData = MutableLiveData<Long>()
+    val pauseLiveEvent = SingleLiveEvent<Unit>()
+    var changeState: () -> Unit = this::play
     fun findTrack(
         trackName: String,
         artist: String
@@ -34,7 +39,8 @@ class PlayerViewModel @Inject constructor(
                     if(tracks.isEmpty()){
 
                     } else {
-                        updatePlayerUI(tracks.first())
+                        track = tracks.first()
+                        updatePlayerUI(track)
                     }
                 }
 
@@ -47,9 +53,27 @@ class PlayerViewModel @Inject constructor(
             })
     }
 
-    fun updatePlayerUI(track: Track) {
+    private fun updatePlayerUI(track: Track) {
         playerData.trackTitle = track.title
         playerData.artist = track.artist.name
         playerData.albumCoverUrl = track.album.bigImageUrl
+    }
+
+    fun playerAct() {
+        changeState()
+    }
+
+    private fun play() {
+        changeState = this::pause
+        playerData.playerButtonIconResource = R.drawable.ic_action_pause
+        trackLiveData.value = track.id
+
+    }
+
+    private fun pause() {
+        changeState = this::play
+        playerData.playerButtonIconResource = R.drawable.ic_action_play
+        pauseLiveEvent.call()
+
     }
 }
