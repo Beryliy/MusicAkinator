@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">MusicAkinator</string>
     <string name="applicationId" translatable="false">391284</string>
+    <string name="controlQuestion">Is that the track?</string>
 </resources>

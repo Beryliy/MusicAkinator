@@ -16,4 +16,47 @@
         <item name="android:paddingTop">@dimen/padding_top_layout_default</item>
         <item name="android:paddingBottom">@dimen/padding_bottom_layout_default</item>
     </style>
+
+    <style name="BigText">
+        <item name="android:textSize">@dimen/text_size_big</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="MediumText">
+        <item name="android:textSize">@dimen/text_size_medium</item>
+    </style>
+
+    <style name="SmallText">
+        <item name="android:textSize">@dimen/text_size_small</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="TextField">
+        <item name="android:layout_width">@dimen/size_scalable</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="Title" parent="TextField">
+        <item name="android:textAppearance">@style/BigText</item>
+    </style>
+
+    <style name="Subtitle" parent="TextField">
+        <item name="android:textAppearance">@style/MediumText</item>
+    </style>
+
+    <style name="SupportText" parent="TextField">
+        <item name="android:textAppearance">@style/SmallText</item>
+    </style>
+
+    <style name="RoundButton">
+        <item name="android:layout_width">@dimen/width_round_button</item>
+        <item name="android:layout_height">@dimen/height_round_button</item>
+        <item name="android:background">@drawable/round_background</item>
+    </style>
+
+    <style name="RectangleRoundedButton">
+        <item name="android:layout_width">@dimen/width_rectangle_rounded_button</item>
+        <item name="android:layout_height">@dimen/height_rectangle_rounded_button</item>
+        <item name="android:background">@drawable/rounded_rectangle_background</item>
+    </style>
 </resources>

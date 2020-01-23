@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
             name="viewModel"
@@ -11,8 +11,79 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".presentation.player.PlayerFragment">
+        style="@style/DefaultScreen"
+        tools:context=".presentation.player.PlayerFragment"
+        tools:background="@android:color/black">
+
+        <ImageView
+            android:layout_width="@dimen/size_scalable"
+            android:layout_height="@dimen/size_scalable"
+            android:id="@+id/albumsCoverIv"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <TextView
+            style="@style/Title"
+            android:id="@+id/trackNameTv"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/contentLimiterGl"
+            app:layout_constraintEnd_toStartOf="@id/playerB"
+            tools:text="Bad company"/>
+
+        <TextView
+            style="@style/Subtitle"
+            android:id="@+id/artistTv"
+            android:textColor="@color/semiTransparentGrey"
+            app:layout_constraintTop_toBottomOf="@id/trackNameTv"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="Five fingers death"/>
+        
+        <Button
+            style="@style/RoundButton"
+            android:id="@+id/playerB"
+            app:layout_constraintTop_toTopOf="@id/contentLimiterGl"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            style="@style/Subtitle"
+            android:id="@+id/controlQuestionTv"
+            android:textColor="@android:color/white"
+            android:text="@string/controlQuestion"
+            android:layout_marginBottom="@dimen/margin_bottom_control_question"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/confirmB"/>
+
+        <ImageButton
+            style="@style/RectangleRoundedButton"
+            android:id="@+id/confirmB"
+            android:backgroundTint="@color/colorLightGreen"
+            android:src="@drawable/ic_action_confirm"
+            android:layout_marginEnd="@dimen/margin_end_confirm_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/declineB"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_chainStyle="packed"/>
+
+        <ImageButton
+            style="@style/RectangleRoundedButton"
+            android:id="@+id/declineB"
+            android:backgroundTint="@color/colorSoftRed"
+            android:src="@drawable/ic_action_decline"
+            android:layout_marginStart="@dimen/margin_start_decline_button"
+            app:layout_constraintStart_toEndOf="@id/confirmB"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:layout_width="@dimen/size_scalable"
+            android:layout_height="@dimen/size_scalable"
+            android:id="@+id/contentLimiterGl"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.6"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

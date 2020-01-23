@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
 
 import com.fourcore.musicakinator.R
@@ -38,5 +39,12 @@ class PlayerFragment : Fragment() {
         databinding.viewModel = viewModel
         databinding.playerData = viewModel.playerData
         return databinding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel.trackLiveData.observe(this, Observer {
+
+        })
     }
 }

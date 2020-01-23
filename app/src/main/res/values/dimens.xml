@@ -1,7 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--global-->
     <dimen name="size_scalable">0dp</dimen>
-    <dimen name="padding_side_layout_default">16dp</dimen>
-    <dimen name="padding_top_layout_default">16dp</dimen>
-    <dimen name="padding_bottom_layout_default">20dp</dimen>
+    <dimen name="padding_side_layout_default">18dp</dimen>
+    <dimen name="padding_top_layout_default">18dp</dimen>
+    <dimen name="padding_bottom_layout_default">32dp</dimen>
+
+    <!--round button-->
+    <dimen name="width_round_button">64dp</dimen>
+    <dimen name="height_round_button">64dp</dimen>
+    <dimen name="corner">8dp</dimen>
+
+    <!--rectangle-->
+    <dimen name="width_rectangle_rounded_button">128dp</dimen>
+    <dimen name="height_rectangle_rounded_button">48dp</dimen>
+
+    <!--player-->
+    <dimen name="margin_bottom_control_question">16dp</dimen>
+    <dimen name="margin_end_confirm_button">24dp</dimen>
+    <dimen name="margin_start_decline_button">24dp</dimen>
+
+    <dimen name="text_size_big">36sp</dimen>
+    <dimen name="text_size_medium">24sp</dimen>
+    <dimen name="text_size_small">12sp</dimen>
 </resources>
