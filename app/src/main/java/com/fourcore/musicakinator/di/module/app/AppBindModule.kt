@@ -1,4 +1,4 @@
-package com.fourcore.musicakinator.di.module
+package com.fourcore.musicakinator.di.module.app
 
 import androidx.lifecycle.ViewModelProvider
 import com.fourcore.musicakinator.di.factory.ViewModelFactory

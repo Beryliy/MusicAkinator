@@ -1,4 +1,4 @@
-package com.fourcore.musicakinator.di.module
+package com.fourcore.musicakinator.di.module.app
 
 import android.app.Application
 import android.content.Context
