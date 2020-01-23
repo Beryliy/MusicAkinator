@@ -10,5 +10,24 @@
         android:id="@+id/lyricRecogniserFragment"
         android:name="com.fourcore.musicakinator.presentation.lyricRecogniser.LyricRecogniserFragment"
         android:label="fragment_lyric_recogniser"
-        tools:layout="@layout/fragment_lyric_recogniser" />
+        tools:layout="@layout/fragment_lyric_recogniser" >
+        <action
+            android:id="@+id/action_lyricRecogniserFragment_to_playerFragment"
+            app:destination="@id/playerFragment"
+            app:popUpTo="@id/lyricRecogniserFragment"
+            app:popUpToInclusive="true">
+            <argument
+                android:name="trackName"
+                app:argType="string"/>
+            <argument
+                android:name="artist"
+                app:argType="string"/>
+        </action>
+
+    </fragment>
+    <fragment
+        android:id="@+id/playerFragment"
+        android:name="com.fourcore.musicakinator.presentation.player.PlayerFragment"
+        android:label="fragment_player"
+        tools:layout="@layout/fragment_player" />
 </navigation>
