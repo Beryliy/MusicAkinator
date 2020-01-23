@@ -3,11 +3,9 @@ package com.fourcore.musicakinator.presentation.player
 import androidx.lifecycle.MutableLiveData
 import com.deezer.sdk.model.Track
 import com.deezer.sdk.network.connect.DeezerConnect
-import com.deezer.sdk.network.request.DeezerRequest
 import com.deezer.sdk.network.request.DeezerRequestFactory
 import com.deezer.sdk.network.request.SearchResultOrder
 import com.deezer.sdk.network.request.event.JsonRequestListener
-import com.deezer.sdk.network.request.event.RequestListener
 import com.fourcore.musicakinator.di.FragmentScope
 import com.fourcore.musicakinator.presentation.BaseViewModel
 import java.lang.Exception
@@ -18,7 +16,6 @@ class PlayerViewModel @Inject constructor(
     val deezerConnect: DeezerConnect,
     val playerData: PlayerData
 ): BaseViewModel() {
-    val trackLiveData = MutableLiveData<Track>()
 
     fun findTrack(
         trackName: String,
@@ -37,7 +34,7 @@ class PlayerViewModel @Inject constructor(
                     if(tracks.isEmpty()){
 
                     } else {
-                        trackLiveData.value = tracks.first()
+                        updatePlayerUI(tracks.first())
                     }
                 }
 
@@ -48,5 +45,11 @@ class PlayerViewModel @Inject constructor(
                 }
 
             })
+    }
+
+    fun updatePlayerUI(track: Track) {
+        playerData.trackTitle = track.title
+        playerData.artist = track.artist.name
+        playerData.albumCoverUrl = track.album.bigImageUrl
     }
 }
