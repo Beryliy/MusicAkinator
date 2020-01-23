@@ -4,7 +4,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.fourcore.musicakinator.presentation.lyricRecogniser.LyricRecogniserViewModel" />
+            type="com.fourcore.musicakinator.presentation.lyricRecogniser.LyricsRecogniserViewModel" />
         <variable
             name="lyricRecogniserData"
             type="com.fourcore.musicakinator.presentation.lyricRecogniser.LyricRecogniserData" />
@@ -32,8 +32,7 @@
             android:onClick="@{() -> viewModel.recogniseLyrics()}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            tools:text="recognise Lyric" />
+            app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

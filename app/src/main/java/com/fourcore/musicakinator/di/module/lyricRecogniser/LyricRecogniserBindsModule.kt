@@ -2,7 +2,7 @@ package com.fourcore.musicakinator.di.module.lyricRecogniser
 
 import androidx.lifecycle.ViewModel
 import com.fourcore.musicakinator.di.factory.ViewModelKey
-import com.fourcore.musicakinator.presentation.lyricRecogniser.LyricRecogniserViewModel
+import com.fourcore.musicakinator.presentation.lyricRecogniser.LyricsRecogniserViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -11,6 +11,6 @@ import dagger.multibindings.IntoMap
 interface LyricRecogniserBindsModule {
     @Binds
     @IntoMap
-    @ViewModelKey(LyricRecogniserViewModel::class)
-    fun bindLyricRecogniserViewModel(lyricRecogniserViewModel: LyricRecogniserViewModel): ViewModel
+    @ViewModelKey(LyricsRecogniserViewModel::class)
+    fun bindLyricRecogniserViewModel(lyricsRecogniserViewModel: LyricsRecogniserViewModel): ViewModel
 }
