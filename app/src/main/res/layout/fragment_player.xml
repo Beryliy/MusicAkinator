@@ -27,6 +27,7 @@
         <TextView
             style="@style/Title"
             android:id="@+id/trackNameTv"
+            android:text="@={playerData.trackTitle}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/contentLimiterGl"
             app:layout_constraintEnd_toStartOf="@id/playerB"
@@ -35,6 +36,7 @@
         <TextView
             style="@style/Subtitle"
             android:id="@+id/artistTv"
+            android:text="@={playerData.artist}"
             android:textColor="@color/semiTransparentGrey"
             app:layout_constraintTop_toBottomOf="@id/trackNameTv"
             app:layout_constraintStart_toStartOf="parent"
