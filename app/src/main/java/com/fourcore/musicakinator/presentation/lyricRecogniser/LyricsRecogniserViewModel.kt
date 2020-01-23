@@ -1,5 +1,6 @@
 package com.fourcore.musicakinator.presentation.lyricRecogniser
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.fourcore.musicakinator.di.FragmentScope
 import com.fourcore.musicakinator.network.pojo.Result
@@ -9,7 +10,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @FragmentScope
-class LyricRecogniserViewModel @Inject constructor(
+class LyricsRecogniserViewModel @Inject constructor(
     val findLyricsRepository: FindLyricsRepository,
     val lyricRecogniserData: LyricRecogniserData
 ): BaseViewModel() {
@@ -21,7 +22,12 @@ class LyricRecogniserViewModel @Inject constructor(
                 songLiveData.postValue(auddIOResponse.result.first())
             } else {
                 //show error screen
+                Log.d(TAG, "error while recognise l")
             }
         }
+    }
+
+    companion object {
+        const val TAG = "LyricRecogniserVM"
     }
 }
