@@ -9,7 +9,7 @@ import javax.inject.Inject
 @FragmentScope
 class LyricRecogniserData @Inject constructor(): BaseObservable() {
     @get:Bindable
-    var lyrics = String()
+    var lyrics = ""
         set(value) {
             field = value
             notifyPropertyChanged(BR.lyrics)
