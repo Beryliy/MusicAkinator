@@ -3,7 +3,6 @@ package com.fourcore.musicakinator.di.component
 import android.app.Application
 import com.fourcore.musicakinator.MusicAkinatorApp
 import com.fourcore.musicakinator.di.builders.ActivityBuilder
-import com.fourcore.musicakinator.di.builders.FragmentBuilder
 import com.fourcore.musicakinator.di.module.ApiModule
 import com.fourcore.musicakinator.di.module.app.AppBindModule
 import com.fourcore.musicakinator.di.module.app.AppProvideModule
@@ -22,8 +21,7 @@ import javax.inject.Singleton
     AppBindModule::class,
     NetworkModule::class,
     ApiModule::class,
-    ActivityBuilder::class,
-    FragmentBuilder::class
+    ActivityBuilder::class
 ])
 interface AppComponent: AndroidInjector<DaggerApplication> {
     @Component.Builder

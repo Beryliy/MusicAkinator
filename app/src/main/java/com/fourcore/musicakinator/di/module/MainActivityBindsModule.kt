@@ -12,5 +12,5 @@ interface MainActivityBindsModule {
     @Binds
     @IntoMap
     @ViewModelKey(GameViewModel::class)
-    fun bindGameViewModel(lyricsRecogniserViewModel: GameViewModel): ViewModel
+    fun bindGameViewModel(gameViewModel: GameViewModel): ViewModel
 }

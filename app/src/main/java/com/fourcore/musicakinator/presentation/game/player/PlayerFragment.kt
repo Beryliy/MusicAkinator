@@ -9,6 +9,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.get
 import androidx.navigation.fragment.navArgs
 import com.deezer.sdk.model.PlayableEntity
 import com.deezer.sdk.player.TrackPlayer
@@ -16,13 +19,16 @@ import com.deezer.sdk.player.event.PlayerWrapperListener
 
 import com.fourcore.musicakinator.R
 import com.fourcore.musicakinator.databinding.FragmentPlayerBinding
+import com.fourcore.musicakinator.presentation.game.GameViewModel
 import dagger.android.support.AndroidSupportInjection
 import java.lang.Exception
 import javax.inject.Inject
 
 class PlayerFragment : Fragment() {
     val args: PlayerFragmentArgs by navArgs()
-    @Inject lateinit var viewModel: PlayerViewModel
+    @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
+    lateinit var gameViewModel: GameViewModel
+    lateinit var viewModel: PlayerViewModel
     @Inject lateinit var trackPlayer: TrackPlayer
 
     override fun onAttach(context: Context) {
@@ -53,6 +59,10 @@ class PlayerFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        gameViewModel = ViewModelProviders.of(this, viewModelFactory)
+            .get(GameViewModel::class.java)
+        viewModel = ViewModelProviders.of(this, viewModelFactory)
+            .get(PlayerViewModel::class.java)
         val databinding = DataBindingUtil.inflate<FragmentPlayerBinding>(
             inflater,
             R.layout.fragment_player,

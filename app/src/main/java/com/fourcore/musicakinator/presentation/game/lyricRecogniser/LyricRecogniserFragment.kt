@@ -15,11 +15,13 @@ import androidx.navigation.fragment.findNavController
 import com.fourcore.musicakinator.R
 import com.fourcore.musicakinator.databinding.FragmentLyricRecogniserBinding
 import com.fourcore.musicakinator.presentation.BaseFragment
+import com.fourcore.musicakinator.presentation.game.GameViewModel
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
 
 class LyricRecogniserFragment : BaseFragment() {
     @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
+    lateinit var gameViewModel: GameViewModel
     lateinit var viewModel: LyricsRecogniserViewModel
 
     override fun onAttach(context: Context) {
@@ -31,6 +33,8 @@ class LyricRecogniserFragment : BaseFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        gameViewModel = ViewModelProviders.of(this, viewModelFactory)
+            .get(GameViewModel::class.java)
         viewModel = ViewModelProviders.of(this, viewModelFactory)
             .get(LyricsRecogniserViewModel::class.java)
         val databinding = DataBindingUtil.inflate<FragmentLyricRecogniserBinding>(
