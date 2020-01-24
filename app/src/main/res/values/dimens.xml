@@ -20,6 +20,11 @@
     <dimen name="height_progress_bar_progress">48dp</dimen>
     <dimen name="progress_corner">8dp</dimen>
 
+    <!--navigation progress bar-->
+    <dimen name="inner_radius_big">72dp</dimen>
+    <dimen name="ring_thickness_medium">8dp</dimen>
+    <dimen name="ring_thickness_upper_medium">9dp</dimen>
+
     <!--lyrics recogniser-->
     <dimen name="height_game_progress_bar">48dp</dimen>
     <dimen name="margin_top_lyrics_edit">24dp</dimen>
