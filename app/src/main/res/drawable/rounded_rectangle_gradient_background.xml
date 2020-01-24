@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-    <item
-        android:drawable="@drawable/rounded_rectangle_background">
-    </item>
     <item>
         <shape>
+            <corners
+                android:radius="@dimen/corner" />
             <gradient
-                android:angle="315"
-                android:startColor="@color/colorLightGreen"
-                android:endColor="@color/colorDimGreen"/>
+                android:angle="135"
+                android:startColor="@color/transparent"
+                android:endColor="@android:color/black"/>
         </shape>
     </item>
 </layer-list>
