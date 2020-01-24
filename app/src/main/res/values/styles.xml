@@ -57,7 +57,7 @@
     <style name="RectangleRoundedButton">
         <item name="android:layout_width">@dimen/width_rectangle_rounded_button</item>
         <item name="android:layout_height">@dimen/height_rectangle_rounded_button</item>
-        <item name="android:background">@drawable/rounded_rectangle_background</item>
+        <item name="android:background">@drawable/rounded_rectangle_button_background</item>
     </style>
 
     <style name="GameProgressBar" parent="Widget.AppCompat.ProgressBar.Horizontal">
