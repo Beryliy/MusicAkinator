@@ -15,12 +15,21 @@
         style="@style/DefaultScreen"
         tools:context=".presentation.game.lyricRecogniser.LyricRecogniserFragment">
 
+        <ProgressBar
+            style="@style/GameProgressBar"
+            android:id="@+id/gameProgressSeekBar"
+            android:progressDrawable="@drawable/game_progress_background"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:progress="50"/>
+
         <EditText
             android:layout_width="match_parent"
             android:layout_height="@dimen/size_scalable"
             android:id="@+id/lyricEt"
             android:text="@={lyricRecogniserData.lyrics}"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/gameProgressSeekBar"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toTopOf="@id/recogniseLyricB" />

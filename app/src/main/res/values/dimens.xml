@@ -15,6 +15,14 @@
     <dimen name="width_rectangle_rounded_button">128dp</dimen>
     <dimen name="height_rectangle_rounded_button">48dp</dimen>
 
+    <!--game progress bar-->
+    <dimen name="height_progress_bar_background">44 dp</dimen>
+    <dimen name="height_progress_bar_progress">48dp</dimen>
+    <dimen name="progress_corner">8dp</dimen>
+
+    <!--lyrics recogniser-->
+    <dimen name="height_game_progress_bar">48dp</dimen>
+
     <!--player-->
     <dimen name="margin_bottom_control_question">16dp</dimen>
     <dimen name="margin_end_confirm_button">24dp</dimen>
