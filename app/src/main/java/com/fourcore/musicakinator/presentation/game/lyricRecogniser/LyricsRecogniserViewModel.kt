@@ -2,6 +2,7 @@ package com.fourcore.musicakinator.presentation.game.lyricRecogniser
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
+import com.fourcore.musicakinator.SingleLiveEvent
 import com.fourcore.musicakinator.di.FragmentScope
 import com.fourcore.musicakinator.network.pojo.Result
 import com.fourcore.musicakinator.network.repository.FindLyricsRepository
@@ -14,12 +15,14 @@ class LyricsRecogniserViewModel @Inject constructor(
     val findLyricsRepository: FindLyricsRepository,
     val lyricRecogniserData: LyricRecogniserData
 ): BaseViewModel() {
-    val songLiveData = MutableLiveData<Result>()
+    val songRecognisedEvent = SingleLiveEvent<Result>()
+    val showProgressEvent = SingleLiveEvent<Unit>()
     fun recogniseLyrics() {
+        showProgressEvent.call()
         launch {
             val auddIOResponse = findLyricsRepository.findSongByLyrics(lyricRecogniserData.lyrics)
             if(auddIOResponse.status == "success") {
-                songLiveData.postValue(auddIOResponse.result.first())
+                songRecognisedEvent.postValue(auddIOResponse.result.first())
             } else {
                 //show error screen
                 Log.d(TAG, "error while recognise l")
