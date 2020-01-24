@@ -4,18 +4,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_graph"
-    app:startDestination="@id/lyricRecogniserFragment">
+    app:startDestination="@id/lyricsRecogniserFragment">
 
     <fragment
-        android:id="@+id/lyricRecogniserFragment"
+        android:id="@+id/lyricsRecogniserFragment"
         android:name="com.fourcore.musicakinator.presentation.game.lyricRecogniser.LyricsRecogniserFragment"
-        android:label="fragment_lyric_recogniser"
-        tools:layout="@layout/fragment_lyric_recogniser" >
+        android:label="fragment_lyrics_recogniser"
+        tools:layout="@layout/fragment_lyrics_recogniser" >
         <action
-            android:id="@+id/action_lyricRecogniserFragment_to_playerFragment"
-            app:destination="@id/playerFragment"
-            app:popUpTo="@id/lyricRecogniserFragment"
-            app:popUpToInclusive="true">
+            android:id="@+id/action_lyricsRecogniserFragment_to_playerFragment"
+            app:destination="@id/playerFragment">
             <argument
                 android:name="trackName"
                 app:argType="string"/>
@@ -23,7 +21,6 @@
                 android:name="artist"
                 app:argType="string"/>
         </action>
-
     </fragment>
     <fragment
         android:id="@+id/playerFragment"

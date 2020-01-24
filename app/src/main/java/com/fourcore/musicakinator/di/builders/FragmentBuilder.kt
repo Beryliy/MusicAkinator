@@ -5,7 +5,7 @@ import com.fourcore.musicakinator.di.module.lyricRecogniser.LyricRecogniserBinds
 import com.fourcore.musicakinator.di.module.lyricRecogniser.LyricRecogniserProvidesModule
 import com.fourcore.musicakinator.di.module.player.PlayerBindsModule
 import com.fourcore.musicakinator.di.module.player.PlayerProvidesModule
-import com.fourcore.musicakinator.presentation.game.lyricRecogniser.LyricRecogniserFragment
+import com.fourcore.musicakinator.presentation.game.lyricRecogniser.LyricsRecogniserFragment
 import com.fourcore.musicakinator.presentation.game.player.PlayerFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
@@ -17,7 +17,7 @@ abstract class FragmentBuilder {
         LyricRecogniserProvidesModule::class
     ])
     @FragmentScope
-    abstract fun contributeLyricRecogniserFragment(): LyricRecogniserFragment
+    abstract fun contributeLyricRecogniserFragment(): LyricsRecogniserFragment
 
     @ContributesAndroidInjector(modules = [
         PlayerBindsModule::class,
