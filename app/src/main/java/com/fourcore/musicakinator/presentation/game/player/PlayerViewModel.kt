@@ -64,6 +64,11 @@ class PlayerViewModel @Inject constructor(
         changeState()
     }
 
+    fun trackEndsPlay() {
+        changeState = this::play
+        playerData.playerButtonIconResource = R.drawable.ic_action_play
+    }
+
     private fun play() {
         changeState = this::pause
         playerData.playerButtonIconResource = R.drawable.ic_action_pause

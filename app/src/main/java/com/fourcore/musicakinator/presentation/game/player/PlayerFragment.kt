@@ -52,6 +52,7 @@ class PlayerFragment : Fragment() {
             }
 
             override fun onTrackEnded(p0: PlayableEntity?) {
+                viewModel.trackEndsPlay()
             }
 
         })
