@@ -2,9 +2,6 @@ package com.fourcore.musicakinator.di.module
 
 import com.deezer.sdk.player.networkcheck.WifiAndMobileNetworkStateChecker
 import com.fourcore.musicakinator.BuildConfig
-import com.fourcore.musicakinator.R
-import com.fourcore.musicakinator.global.proxy.ResourcesRepository
-import com.fourcore.musicakinator.network.interceptor.HeaderInterceptor
 import com.fourcore.musicakinator.network.service.FindLyricsService
 import dagger.Module
 import dagger.Provides
@@ -18,12 +15,7 @@ object NetworkModule {
     @Provides
     @Singleton
     @JvmStatic
-    fun provideOkhttp(resourcesRepository: ResourcesRepository): OkHttpClient {
-        val headerInterceptor = HeaderInterceptor(resourcesRepository.getString(R.string.auddIoAPIToken))
-        return OkHttpClient.Builder()
-            .addInterceptor(headerInterceptor)
-            .build()
-    }
+    fun provideOkhttp() = OkHttpClient.Builder().build()
 
     @Provides
     @Singleton
