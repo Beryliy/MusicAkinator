@@ -20,6 +20,14 @@
     <dimen name="margin_end_confirm_button">24dp</dimen>
     <dimen name="margin_start_decline_button">24dp</dimen>
 
+    <!--result dialog-->
+    <dimen name="width_result_image">320dp</dimen>
+    <dimen name="height_result_image">240dp</dimen>
+    <dimen name="margin_top_result_image">24dp</dimen>
+    <dimen name="margin_top_result_text">16dp</dimen>
+    <dimen name="margin_bottom_result_text">28dp</dimen>
+    <dimen name="text_size_result_text">16sp</dimen>
+
     <dimen name="text_size_big">36sp</dimen>
     <dimen name="text_size_medium">24sp</dimen>
     <dimen name="text_size_small">12sp</dimen>
