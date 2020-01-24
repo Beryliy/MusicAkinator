@@ -10,7 +10,7 @@ import javax.inject.Inject
 class LyricRecogniserData @Inject constructor(): BaseObservable() {
 
     @get:Bindable
-    var gameProgress: Int = 0
+    var gameProgress: Int = 1
         set(value) {
             field = value
             notifyPropertyChanged(BR.gameProgress)
