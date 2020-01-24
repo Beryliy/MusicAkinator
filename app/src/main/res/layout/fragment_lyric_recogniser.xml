@@ -17,19 +17,30 @@
 
         <ProgressBar
             style="@style/GameProgressBar"
-            android:id="@+id/gameProgressSeekBar"
+            android:id="@+id/gamePb"
+            android:max="@integer/num_rounds"
             android:progressDrawable="@drawable/game_progress_background"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            tools:progress="50"/>
+            tools:progress="4"/>
+
+        <TextView
+            style="@style/Subtitle"
+            android:layout_width="wrap_content"
+            android:id="@+id/textProgressTv"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/gamePb"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/gamePb"
+            tools:text="1/5"/>
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="@dimen/size_scalable"
             android:id="@+id/lyricEt"
             android:text="@={lyricRecogniserData.lyrics}"
-            app:layout_constraintTop_toBottomOf="@id/gameProgressSeekBar"
+            app:layout_constraintTop_toBottomOf="@id/gamePb"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toTopOf="@id/recogniseLyricB" />
