@@ -14,12 +14,14 @@ import androidx.navigation.fragment.findNavController
 
 import com.fourcore.musicakinator.R
 import com.fourcore.musicakinator.databinding.FragmentLyricRecogniserBinding
+import com.fourcore.musicakinator.domain.GameResult
 import com.fourcore.musicakinator.presentation.BaseFragment
+import com.fourcore.musicakinator.presentation.dialog.ResultDialog
 import com.fourcore.musicakinator.presentation.game.GameViewModel
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
 
-class LyricRecogniserFragment : BaseFragment() {
+class LyricsRecogniserFragment : BaseFragment() {
     @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
     lateinit var gameViewModel: GameViewModel
     lateinit var viewModel: LyricsRecogniserViewModel
@@ -58,5 +60,13 @@ class LyricRecogniserFragment : BaseFragment() {
             )
             findNavController().navigate(action)
         })
+        gameViewModel.gameLiveResult.observe(this, Observer {
+            showGameResult(it)
+        })
+    }
+
+    private fun showGameResult(gameResult: GameResult) {
+        val resultDialog = ResultDialog(gameResult.imageId(), gameResult.descriptionId())
+        resultDialog.show(requireActivity())
     }
 }
