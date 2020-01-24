@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">MusicAkinator</string>
     <string name="applicationId" translatable="false">391284</string>
+    <string name="findTrack">Find by lyrics</string>
+    <string name="typeLyricsHint">Start type lyrics\u2026</string>
     <string name="controlQuestion">Is that the track?</string>
     <string name="usersWin">User won pogchamp</string>
     <string name="appsWin">App won monkaS</string>
