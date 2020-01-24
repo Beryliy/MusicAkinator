@@ -12,6 +12,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.get
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.deezer.sdk.model.PlayableEntity
 import com.deezer.sdk.player.TrackPlayer
@@ -85,13 +86,8 @@ class PlayerFragment : Fragment() {
         viewModel.pauseLiveEvent.observe(this, Observer{
             trackPlayer.pause()
         })
-        viewModel.gameLiveResult.observe(this, Observer {
-            showGameResult(it)
+        gameViewModel.answerEvent.observe(this, Observer {
+            findNavController().popBackStack()
         })
-    }
-
-    private fun showGameResult(gameResult: GameResult) {
-        val resultDialog = ResultDialog(gameResult.imageId(), gameResult.descriptionId())
-        resultDialog.show(requireActivity())
     }
 }

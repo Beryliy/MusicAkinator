@@ -22,7 +22,6 @@ class PlayerViewModel @Inject constructor(
     lateinit var track: Track
     val trackLiveData = MutableLiveData<Long>()
     val pauseLiveEvent = SingleLiveEvent<Unit>()
-    val gameLiveResult = MutableLiveData<GameResult>()
     var changeState: () -> Unit = this::play
     fun findTrack(
         trackName: String,

@@ -2,6 +2,7 @@ package com.fourcore.musicakinator.presentation.game
 
 import androidx.lifecycle.MutableLiveData
 import com.fourcore.musicakinator.R
+import com.fourcore.musicakinator.SingleLiveEvent
 import com.fourcore.musicakinator.di.ActivityScope
 import com.fourcore.musicakinator.domain.GameResult
 import com.fourcore.musicakinator.global.proxy.ResourcesRepository
@@ -15,14 +16,17 @@ class GameViewModel @Inject constructor(
 ): BaseViewModel() {
     lateinit var lyricRecogniserData: LyricRecogniserData
     val numRounds = resourcesRepository.getInteger(R.integer.num_rounds)
+    val answerEvent = SingleLiveEvent<Unit>()
     val gameLiveResult = MutableLiveData<GameResult>()
     private var roundNumber = 0
 
     fun confirmTrackGuess() {
+        answerEvent.call()
         gameLiveResult.value = GameResult.APPS_WIN
     }
 
     fun declineTrackGuess() {
+        answerEvent.call()
         if(++roundNumber < numRounds) {
             lyricRecogniserData.gameProgress = roundNumber
         } else {
