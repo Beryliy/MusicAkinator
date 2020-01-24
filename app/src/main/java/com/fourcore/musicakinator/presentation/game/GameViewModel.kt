@@ -1,29 +1,34 @@
 package com.fourcore.musicakinator.presentation.game
 
 import androidx.lifecycle.MutableLiveData
+import com.fourcore.musicakinator.R
 import com.fourcore.musicakinator.di.ActivityScope
 import com.fourcore.musicakinator.domain.GameResult
+import com.fourcore.musicakinator.global.proxy.ResourcesRepository
 import com.fourcore.musicakinator.presentation.BaseViewModel
+import com.fourcore.musicakinator.presentation.game.lyricRecogniser.LyricRecogniserData
 import javax.inject.Inject
 
 @ActivityScope
-class GameViewModel @Inject constructor(): BaseViewModel() {
+class GameViewModel @Inject constructor(
+    resourcesRepository: ResourcesRepository
+): BaseViewModel() {
+    lateinit var lyricRecogniserData: LyricRecogniserData
+    val numRounds = resourcesRepository.getInteger(R.integer.num_rounds)
     val gameLiveResult = MutableLiveData<GameResult>()
     private var roundNumber = 0
-    val roundLiveNumber = MutableLiveData<Int>()
 
     fun confirmTrackGuess() {
         gameLiveResult.value = GameResult.APPS_WIN
     }
 
     fun declineTrackGuess() {
-        if(++roundNumber > 4) {
+        if(++roundNumber < numRounds) {
+            lyricRecogniserData.gameProgress = roundNumber
+        } else {
             gameLiveResult.value = GameResult.USERS_WIN
             roundNumber = 0
-            roundLiveNumber.value = roundNumber
-
-        } else {
-            roundLiveNumber.value = ++roundNumber
+            lyricRecogniserData.gameProgress = roundNumber
         }
     }
 }

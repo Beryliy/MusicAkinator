@@ -80,7 +80,7 @@
         <ImageButton
             style="@style/RectangleRoundedButton"
             android:id="@+id/declineB"
-            android:onClick="@{gameViewModel.declineTrackGuess()}"
+            android:onClick="@{() -> gameViewModel.declineTrackGuess()}"
             android:backgroundTint="@color/colorSoftRed"
             android:src="@drawable/ic_action_decline"
             android:layout_marginStart="@dimen/margin_start_decline_button"

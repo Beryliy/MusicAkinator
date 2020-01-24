@@ -8,6 +8,14 @@ import javax.inject.Inject
 
 @FragmentScope
 class LyricRecogniserData @Inject constructor(): BaseObservable() {
+
+    @get:Bindable
+    var gameProgress: Int = 0
+        set(value) {
+            field = value
+            notifyPropertyChanged(BR.gameProgress)
+        }
+
     @get:Bindable
     var lyrics = ""
         set(value) {

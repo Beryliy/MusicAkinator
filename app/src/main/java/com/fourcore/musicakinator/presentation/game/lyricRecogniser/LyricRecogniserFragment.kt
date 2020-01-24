@@ -37,6 +37,7 @@ class LyricRecogniserFragment : BaseFragment() {
             .get(GameViewModel::class.java)
         viewModel = ViewModelProviders.of(this, viewModelFactory)
             .get(LyricsRecogniserViewModel::class.java)
+        gameViewModel.lyricRecogniserData = viewModel.lyricRecogniserData
         val databinding = DataBindingUtil.inflate<FragmentLyricRecogniserBinding>(
             inflater,
             R.layout.fragment_lyric_recogniser,
