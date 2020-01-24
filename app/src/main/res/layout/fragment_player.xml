@@ -2,6 +2,9 @@
 <layout xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
+            name="gameViewModel"
+            type="com.fourcore.musicakinator.presentation.game.GameViewModel" />
+        <variable
             name="viewModel"
             type="com.fourcore.musicakinator.presentation.game.player.PlayerViewModel" />
         <variable
@@ -65,6 +68,7 @@
         <ImageButton
             style="@style/RectangleRoundedButton"
             android:id="@+id/confirmB"
+            android:onClick="@{() -> gameViewModel.confirmTrackGuess()}"
             android:backgroundTint="@color/colorLightGreen"
             android:src="@drawable/ic_action_confirm"
             android:layout_marginEnd="@dimen/margin_end_confirm_button"
@@ -76,14 +80,14 @@
         <ImageButton
             style="@style/RectangleRoundedButton"
             android:id="@+id/declineB"
+            android:onClick="@{gameViewModel.declineTrackGuess()}"
             android:backgroundTint="@color/colorSoftRed"
             android:src="@drawable/ic_action_decline"
             android:layout_marginStart="@dimen/margin_start_decline_button"
             app:layout_constraintStart_toEndOf="@id/confirmB"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            />
+            app:layout_constraintHorizontal_chainStyle="packed" />
 
         <androidx.constraintlayout.widget.Guideline
             android:layout_width="@dimen/size_scalable"

@@ -19,6 +19,8 @@ import com.deezer.sdk.player.event.PlayerWrapperListener
 
 import com.fourcore.musicakinator.R
 import com.fourcore.musicakinator.databinding.FragmentPlayerBinding
+import com.fourcore.musicakinator.domain.GameResult
+import com.fourcore.musicakinator.presentation.dialog.ResultDialog
 import com.fourcore.musicakinator.presentation.game.GameViewModel
 import dagger.android.support.AndroidSupportInjection
 import java.lang.Exception
@@ -83,5 +85,13 @@ class PlayerFragment : Fragment() {
         viewModel.pauseLiveEvent.observe(this, Observer{
             trackPlayer.pause()
         })
+        viewModel.gameLiveResult.observe(this, Observer {
+            showGameResult(it)
+        })
+    }
+
+    private fun showGameResult(gameResult: GameResult) {
+        val resultDialog = ResultDialog(gameResult.imageId(), gameResult.descriptionId())
+        resultDialog.show(requireActivity())
     }
 }

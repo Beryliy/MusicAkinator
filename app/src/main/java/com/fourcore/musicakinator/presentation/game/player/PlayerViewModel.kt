@@ -9,6 +9,7 @@ import com.deezer.sdk.network.request.event.JsonRequestListener
 import com.fourcore.musicakinator.R
 import com.fourcore.musicakinator.SingleLiveEvent
 import com.fourcore.musicakinator.di.FragmentScope
+import com.fourcore.musicakinator.domain.GameResult
 import com.fourcore.musicakinator.presentation.BaseViewModel
 import java.lang.Exception
 import javax.inject.Inject
@@ -21,6 +22,7 @@ class PlayerViewModel @Inject constructor(
     lateinit var track: Track
     val trackLiveData = MutableLiveData<Long>()
     val pauseLiveEvent = SingleLiveEvent<Unit>()
+    val gameLiveResult = MutableLiveData<GameResult>()
     var changeState: () -> Unit = this::play
     fun findTrack(
         trackName: String,
@@ -67,13 +69,11 @@ class PlayerViewModel @Inject constructor(
         changeState = this::pause
         playerData.playerButtonIconResource = R.drawable.ic_action_pause
         trackLiveData.value = track.id
-
     }
 
     private fun pause() {
         changeState = this::play
         playerData.playerButtonIconResource = R.drawable.ic_action_play
         pauseLiveEvent.call()
-
     }
 }
