@@ -1,6 +1,5 @@
 package com.fourcore.musicakinator.presentation.game.lyricRecogniser
 
-
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -13,9 +12,10 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 
 import com.fourcore.musicakinator.R
-import com.fourcore.musicakinator.databinding.FragmentLyricRecogniserBinding
+import com.fourcore.musicakinator.databinding.FragmentLyricsRecogniserBinding
 import com.fourcore.musicakinator.domain.GameResult
 import com.fourcore.musicakinator.presentation.BaseFragment
+import com.fourcore.musicakinator.presentation.dialog.ProgressDialog
 import com.fourcore.musicakinator.presentation.dialog.ResultDialog
 import com.fourcore.musicakinator.presentation.game.GameViewModel
 import dagger.android.support.AndroidSupportInjection
@@ -25,6 +25,7 @@ class LyricsRecogniserFragment : BaseFragment() {
     @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
     lateinit var gameViewModel: GameViewModel
     lateinit var viewModel: LyricsRecogniserViewModel
+    @Inject lateinit var progressDialog: ProgressDialog
 
     override fun onAttach(context: Context) {
         AndroidSupportInjection.inject(this)
@@ -40,9 +41,9 @@ class LyricsRecogniserFragment : BaseFragment() {
         viewModel = ViewModelProviders.of(this, viewModelFactory)
             .get(LyricsRecogniserViewModel::class.java)
         gameViewModel.lyricRecogniserData = viewModel.lyricRecogniserData
-        val databinding = DataBindingUtil.inflate<FragmentLyricRecogniserBinding>(
+        val databinding = DataBindingUtil.inflate<FragmentLyricsRecogniserBinding>(
             inflater,
-            R.layout.fragment_lyric_recogniser,
+            R.layout.fragment_lyrics_recogniser,
             container,
             false
         )
@@ -53,14 +54,17 @@ class LyricsRecogniserFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.songLiveData.observe(this, Observer {
-            val action = LyricRecogniserFragmentDirections.actionLyricRecogniserFragmentToPlayerFragment(
+        viewModel.showProgressEvent.observe(this, Observer {
+            progressDialog.show(requireActivity())
+        })
+        viewModel.songRecognisedEvent.observe(this, Observer {
+            val action = LyricsRecogniserFragmentDirections.actionLyricsRecogniserFragmentToPlayerFragment(
                 it.title,
                 it.artist
             )
             findNavController().navigate(action)
         })
-        gameViewModel.gameLiveResult.observe(this, Observer {
+        gameViewModel.gameOverEvent.observe(this, Observer {
             showGameResult(it)
         })
     }

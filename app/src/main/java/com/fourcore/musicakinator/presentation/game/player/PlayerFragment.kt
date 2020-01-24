@@ -3,6 +3,7 @@ package com.fourcore.musicakinator.presentation.game.player
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,7 +12,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
-import androidx.lifecycle.get
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.deezer.sdk.model.PlayableEntity
@@ -20,8 +21,7 @@ import com.deezer.sdk.player.event.PlayerWrapperListener
 
 import com.fourcore.musicakinator.R
 import com.fourcore.musicakinator.databinding.FragmentPlayerBinding
-import com.fourcore.musicakinator.domain.GameResult
-import com.fourcore.musicakinator.presentation.dialog.ResultDialog
+import com.fourcore.musicakinator.presentation.dialog.ProgressDialog
 import com.fourcore.musicakinator.presentation.game.GameViewModel
 import dagger.android.support.AndroidSupportInjection
 import java.lang.Exception
@@ -33,6 +33,7 @@ class PlayerFragment : Fragment() {
     lateinit var gameViewModel: GameViewModel
     lateinit var viewModel: PlayerViewModel
     @Inject lateinit var trackPlayer: TrackPlayer
+    @Inject lateinit var progressDialog: ProgressDialog
 
     override fun onAttach(context: Context) {
         AndroidSupportInjection.inject(this)
@@ -74,12 +75,14 @@ class PlayerFragment : Fragment() {
             false
         )
         databinding.viewModel = viewModel
+        databinding.gameViewModel = gameViewModel
         databinding.playerData = viewModel.playerData
         return databinding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        progressDialog.hide()
         viewModel.findTrack(args.trackName, args.artist)
         viewModel.trackLiveData.observe(this, Observer {
             trackPlayer.playTrack(it)
@@ -90,5 +93,8 @@ class PlayerFragment : Fragment() {
         gameViewModel.answerEvent.observe(this, Observer {
             findNavController().popBackStack()
         })
+    }
+    companion object {
+        const val TAG = "PlayerFragment"
     }
 }
