@@ -80,17 +80,25 @@ class PlayerFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //progressDialog.hide()
         viewModel.trackLiveData.observe(this, Observer {
             trackPlayer.playTrack(it)
         })
         viewModel.pauseLiveEvent.observe(this, Observer{
             trackPlayer.pause()
         })
+        gameViewModel.trackLivaData.observe(this, Observer {
+            viewModel.track = it
+        })
         gameViewModel.answerEvent.observe(this, Observer {
             findNavController().popBackStack()
         })
     }
+
+    override fun onPause() {
+        super.onPause()
+        trackPlayer.stop()
+    }
+
     companion object {
         const val TAG = "PlayerFragment"
     }

@@ -7,5 +7,7 @@
     <ProgressBar
         style="@style/NavigationProgressBar"
         android:id="@+id/navigationPb"
+        android:backgroundTint="@color/lightGrey"
+        android:progressTint="@color/orange"
         android:layout_centerInParent="true"/>
 </RelativeLayout>

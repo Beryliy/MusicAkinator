@@ -16,45 +16,18 @@ import javax.inject.Inject
 
 @FragmentScope
 class PlayerViewModel @Inject constructor(
-    val deezerConnect: DeezerConnect,
     val playerData: PlayerData
 ): BaseViewModel() {
-    lateinit var track: Track
+    var track: Track? = null
+    set(value) {
+        updatePlayerData(value!!)
+        field = value
+    }
     val trackLiveData = MutableLiveData<Long>()
     val pauseLiveEvent = SingleLiveEvent<Unit>()
     var changeState: () -> Unit = this::play
-    fun findTrack(
-        trackName: String,
-        artist: String
-    ) {
-        val query = "$trackName $artist"
-        val deezerRequest = DeezerRequestFactory.requestSearchTracks(
-            query,
-            SearchResultOrder.Ranking
-        )
-        deezerConnect.requestAsync(
-            deezerRequest,
-            object: JsonRequestListener() {
-                override fun onResult(result: Any?, requestId: Any?) {
-                    val tracks = result as List<Track>
-                    if(tracks.isEmpty()){
 
-                    } else {
-                        track = tracks.first()
-                        updatePlayerUI(track)
-                    }
-                }
-
-                override fun onUnparsedResult(p0: String?, p1: Any?) {
-                }
-
-                override fun onException(p0: Exception?, p1: Any?) {
-                }
-
-            })
-    }
-
-    private fun updatePlayerUI(track: Track) {
+    private fun updatePlayerData(track: Track) {
         playerData.trackTitle = track.title
         playerData.artist = track.artist.name
         playerData.albumCoverUrl = track.album.bigImageUrl
@@ -72,7 +45,7 @@ class PlayerViewModel @Inject constructor(
     private fun play() {
         changeState = this::pause
         playerData.playerButtonIconResource = R.drawable.ic_action_pause
-        trackLiveData.value = track.id
+        trackLiveData.value = track!!.id
     }
 
     private fun pause() {

@@ -1,5 +1,7 @@
 package com.fourcore.musicakinator.presentation.game
 
+import androidx.lifecycle.MutableLiveData
+import com.deezer.sdk.model.Track
 import com.fourcore.musicakinator.R
 import com.fourcore.musicakinator.SingleLiveEvent
 import com.fourcore.musicakinator.di.ActivityScope
@@ -13,6 +15,7 @@ import javax.inject.Inject
 class GameViewModel @Inject constructor(
     resourcesRepository: ResourcesRepository
 ): BaseViewModel() {
+    val trackLivaData = MutableLiveData<Track>()
     lateinit var lyricRecogniserData: LyricRecogniserData
     val numRounds = resourcesRepository.getInteger(R.integer.num_rounds)
     val answerEvent = SingleLiveEvent<Unit>()

@@ -26,6 +26,7 @@ class LyricsRecogniserFragment : BaseFragment() {
     @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
     lateinit var gameViewModel: GameViewModel
     lateinit var viewModel: LyricsRecogniserViewModel
+    @Inject lateinit var progressDialog: ProgressDialog
 
     override fun onAttach(context: Context) {
         AndroidSupportInjection.inject(this)
@@ -40,6 +41,7 @@ class LyricsRecogniserFragment : BaseFragment() {
             .get(GameViewModel::class.java)
         viewModel = ViewModelProviders.of(this, viewModelFactory)
             .get(LyricsRecogniserViewModel::class.java)
+        viewModel.bindGameViewModel(gameViewModel)
         gameViewModel.lyricRecogniserData = viewModel.lyricRecogniserData
         val databinding = DataBindingUtil.inflate<FragmentLyricsRecogniserBinding>(
             inflater,
@@ -55,9 +57,10 @@ class LyricsRecogniserFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.showProgressEvent.observe(this, Observer {
-            //progressDialog.show(requireActivity())
+            progressDialog.show(requireActivity())
         })
         viewModel.songRecognisedEvent.observe(this, Observer {
+            progressDialog.hide()
             val action = LyricsRecogniserFragmentDirections.actionLyricsRecogniserFragmentToPlayerFragment()
             findNavController().navigate(action)
         })

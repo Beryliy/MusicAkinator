@@ -1,24 +1,27 @@
 package com.fourcore.musicakinator.presentation.dialog
 
 import android.app.Activity
-import android.app.AlertDialog
+import android.app.Dialog
 import com.fourcore.musicakinator.R
 
-class ProgressDialog {
-    var alertDialog: AlertDialog? = null
+class ProgressDialog{
+    var dialog: Dialog? = null
 
     fun show(activity: Activity) {
-        val view = activity.layoutInflater.inflate(R.layout.dialog_progress, null)
-        if(alertDialog == null) {
-            alertDialog = AlertDialog.Builder(activity)
-                .setView(view)
-                .setCancelable(false)
-                .create()
+        if(dialog == null) {
+            dialog = Dialog(activity, R.style.ProgressDialog)
         }
-        alertDialog?.show()
+        val view = activity.layoutInflater.inflate(R.layout.dialog_progress, null)
+        dialog?.setContentView(view)
+        dialog?.show()
     }
 
     fun hide() {
-        alertDialog?.dismiss()
+        dialog?.dismiss()
+    }
+
+    fun destroy() {
+        dialog?.dismiss()
+        dialog = null
     }
 }
