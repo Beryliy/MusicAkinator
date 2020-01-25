@@ -24,5 +24,8 @@ class MainActivity : FragmentActivity(), HasAndroidInjector {
         progressDialog.destroy()
     }
 
+    override fun onBackPressed() {
+    }
+
     override fun androidInjector() = androidInjector
 }
