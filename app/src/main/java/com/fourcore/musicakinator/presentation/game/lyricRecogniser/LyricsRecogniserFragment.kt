@@ -16,6 +16,7 @@ import androidx.navigation.fragment.findNavController
 import com.fourcore.musicakinator.R
 import com.fourcore.musicakinator.databinding.FragmentLyricsRecogniserBinding
 import com.fourcore.musicakinator.domain.GameResult
+import com.fourcore.musicakinator.domain.TrackShortData
 import com.fourcore.musicakinator.presentation.BaseFragment
 import com.fourcore.musicakinator.presentation.dialog.ProgressDialog
 import com.fourcore.musicakinator.presentation.dialog.ResultDialog
@@ -65,6 +66,9 @@ class LyricsRecogniserFragment : BaseFragment() {
             val action = LyricsRecogniserFragmentDirections.actionLyricsRecogniserFragmentToPlayerFragment()
             findNavController().navigate(action)
         })
+        viewModel.trackSoundNotFoundEvent.observe(this, Observer {
+            showTrackData(it)
+        })
         viewModel.errorEvent.observe(this, Observer {
             progressDialog.hide()
             showError(it.errorDescription)
@@ -74,7 +78,28 @@ class LyricsRecogniserFragment : BaseFragment() {
         })
     }
 
-    fun showError(errorMessage: String) {
+    private fun showTrackData(trackShortData: TrackShortData) {
+        AlertDialog.Builder(requireActivity())
+            .setMessage(resources.getString(
+                R.string.trackSoundNotFound,
+                trackShortData.title,
+                trackShortData.artist
+            ))
+            .setPositiveButton(
+                resources.getString(R.string.right)) { dialog, which ->
+                gameViewModel.confirmTrackGuess()
+                dialog.dismiss()
+            }
+            .setNegativeButton(
+                resources.getString(R.string.no)) {dialog, which ->
+                gameViewModel.declineTrackGuess()
+                dialog.dismiss()
+            }
+            .setCancelable(false)
+            .show()
+    }
+
+    private fun showError(errorMessage: String) {
         AlertDialog.Builder(requireActivity())
             .setMessage(errorMessage)
             .setCancelable(true)

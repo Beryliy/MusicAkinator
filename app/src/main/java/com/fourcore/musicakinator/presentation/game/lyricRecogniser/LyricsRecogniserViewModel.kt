@@ -8,6 +8,7 @@ import com.deezer.sdk.network.request.event.JsonRequestListener
 import com.fourcore.musicakinator.R
 import com.fourcore.musicakinator.SingleLiveEvent
 import com.fourcore.musicakinator.di.FragmentScope
+import com.fourcore.musicakinator.domain.TrackShortData
 import com.fourcore.musicakinator.global.proxy.ResourcesRepository
 import com.fourcore.musicakinator.network.repository.FindLyricsRepository
 import com.fourcore.musicakinator.presentation.BaseViewModel
@@ -28,6 +29,7 @@ class LyricsRecogniserViewModel @Inject constructor(
     lateinit var gameViewModel: GameViewModel
     val songRecognisedEvent = SingleLiveEvent<Unit>()
     val showProgressEvent = SingleLiveEvent<Unit>()
+    val trackSoundNotFoundEvent = SingleLiveEvent<TrackShortData>()
     val errorEvent = SingleLiveEvent<AkinatorError>()
 
     fun bindGameViewModel(gameViewModel: GameViewModel) {
@@ -58,7 +60,9 @@ class LyricsRecogniserViewModel @Inject constructor(
                                 override fun onResult(result: Any?, requestId: Any?) {
                                     val tracks = result as List<Track>
                                     if(tracks.isEmpty()){
-
+                                        trackSoundNotFoundEvent.postValue(
+                                            TrackShortData(trackInfo.title, trackInfo.artist)
+                                        )
                                     } else {
                                         gameViewModel.trackLivaData.postValue(tracks.first())
                                         songRecognisedEvent.call()
