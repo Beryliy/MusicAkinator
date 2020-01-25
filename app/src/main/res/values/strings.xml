@@ -12,4 +12,5 @@
     <string name="noNetwork">No internet connection</string>
     <string name="auddRequestsRunOut">Free requests to AuddIO API run out</string>
     <string name="unknownError">Unknown error\ncode: %1$d\nmessage: %2$s</string>
+    <string name="lyricsWasntRecognised">Cannot recognise lyrics, try to input another lyrics fragment</string>
 </resources>

@@ -41,7 +41,10 @@ class LyricsRecogniserViewModel @Inject constructor(
                 val auddIOResponse = findLyricsRepository.findSongByLyrics(lyricRecogniserData.lyrics)
                 if(auddIOResponse.status == "success") {
                     if(auddIOResponse.result.isEmpty()) {
-
+                        gameViewModel.declineTrackGuess()
+                        errorEvent.postValue(
+                            AkinatorError(resourcesRepository.getString(R.string.lyricsWasntRecognised))
+                        )
                     } else {
                         val trackInfo = auddIOResponse.result.first()
                         val query = "${trackInfo.title} ${trackInfo.artist}"
