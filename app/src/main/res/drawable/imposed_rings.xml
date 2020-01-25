@@ -5,15 +5,32 @@
             android:shape="ring"
             android:innerRadius="@dimen/inner_radius_big"
             android:thickness="@dimen/ring_thickness_medium"
-            android:useLevel="false"/>
+            android:useLevel="false" >
+            <solid
+                android:color="@color/lightGrey"/>
+        </shape>
     </item>
     <item android:id="@android:id/progress">
-        <clip>
+        <rotate
+            android:fromDegrees="270"
+            android:pivotX="50%"
+            android:pivotY="50%"
+            android:toDegrees="0">
             <shape
                 android:shape="ring"
                 android:innerRadius="@dimen/inner_radius_big"
                 android:thickness="@dimen/ring_thickness_upper_medium"
-                android:useLevel="false"/>
-        </clip>
+                android:useLevel="true">
+                <gradient
+                    android:startColor="@color/yelow"
+                    android:endColor="@color/orange"
+                    android:type="sweep" />
+                <rotate
+                    android:fromDegrees="0"
+                    android:pivotX="50%"
+                    android:pivotY="50%"
+                    android:toDegrees="360" />
+            </shape>
+        </rotate>
     </item>
 </layer-list>

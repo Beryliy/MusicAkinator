@@ -37,6 +37,10 @@
     <dimen name="margin_end_confirm_button">24dp</dimen>
     <dimen name="margin_start_decline_button">24dp</dimen>
 
+    <!--progress dialog-->
+    <dimen name="width_progress">160dp</dimen>
+    <dimen name="height_progress">160dp</dimen>
+
     <!--result dialog-->
     <dimen name="width_result_image">320dp</dimen>
     <dimen name="height_result_image">240dp</dimen>
