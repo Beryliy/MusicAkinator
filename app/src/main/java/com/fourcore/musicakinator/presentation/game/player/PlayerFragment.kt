@@ -28,12 +28,10 @@ import java.lang.Exception
 import javax.inject.Inject
 
 class PlayerFragment : Fragment() {
-    val args: PlayerFragmentArgs by navArgs()
     @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
     lateinit var gameViewModel: GameViewModel
     lateinit var viewModel: PlayerViewModel
     @Inject lateinit var trackPlayer: TrackPlayer
-    @Inject lateinit var progressDialog: ProgressDialog
 
     override fun onAttach(context: Context) {
         AndroidSupportInjection.inject(this)
@@ -82,8 +80,7 @@ class PlayerFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        progressDialog.hide()
-        viewModel.findTrack(args.trackName, args.artist)
+        //progressDialog.hide()
         viewModel.trackLiveData.observe(this, Observer {
             trackPlayer.playTrack(it)
         })

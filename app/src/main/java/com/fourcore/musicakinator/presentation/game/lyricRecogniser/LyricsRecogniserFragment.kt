@@ -2,6 +2,7 @@ package com.fourcore.musicakinator.presentation.game.lyricRecogniser
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,7 +26,6 @@ class LyricsRecogniserFragment : BaseFragment() {
     @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
     lateinit var gameViewModel: GameViewModel
     lateinit var viewModel: LyricsRecogniserViewModel
-    @Inject lateinit var progressDialog: ProgressDialog
 
     override fun onAttach(context: Context) {
         AndroidSupportInjection.inject(this)
@@ -55,13 +55,10 @@ class LyricsRecogniserFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.showProgressEvent.observe(this, Observer {
-            progressDialog.show(requireActivity())
+            //progressDialog.show(requireActivity())
         })
         viewModel.songRecognisedEvent.observe(this, Observer {
-            val action = LyricsRecogniserFragmentDirections.actionLyricsRecogniserFragmentToPlayerFragment(
-                it.title,
-                it.artist
-            )
+            val action = LyricsRecogniserFragmentDirections.actionLyricsRecogniserFragmentToPlayerFragment()
             findNavController().navigate(action)
         })
         gameViewModel.gameOverEvent.observe(this, Observer {
@@ -72,5 +69,9 @@ class LyricsRecogniserFragment : BaseFragment() {
     private fun showGameResult(gameResult: GameResult) {
         val resultDialog = ResultDialog(gameResult.imageId(), gameResult.descriptionId())
         resultDialog.show(requireActivity())
+    }
+
+    companion object {
+        const val TAG = "LyricsRecogniserFragm"
     }
 }

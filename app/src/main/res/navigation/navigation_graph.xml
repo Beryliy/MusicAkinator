@@ -13,25 +13,11 @@
         tools:layout="@layout/fragment_lyrics_recogniser" >
         <action
             android:id="@+id/action_lyricsRecogniserFragment_to_playerFragment"
-            app:destination="@id/playerFragment">
-            <argument
-                android:name="trackName"
-                app:argType="string"/>
-            <argument
-                android:name="artist"
-                app:argType="string"/>
-        </action>
+            app:destination="@id/playerFragment"/>
     </fragment>
     <fragment
         android:id="@+id/playerFragment"
         android:name="com.fourcore.musicakinator.presentation.game.player.PlayerFragment"
         android:label="fragment_player"
-        tools:layout="@layout/fragment_player">
-        <argument
-            android:name="trackName"
-            app:argType="string"/>
-        <argument
-            android:name="artist"
-            app:argType="string"/>
-    </fragment>
+        tools:layout="@layout/fragment_player"/>
 </navigation>
