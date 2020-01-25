@@ -1,5 +1,6 @@
 package com.fourcore.musicakinator.presentation.game.lyricRecogniser
 
+import android.app.AlertDialog
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
@@ -64,9 +65,20 @@ class LyricsRecogniserFragment : BaseFragment() {
             val action = LyricsRecogniserFragmentDirections.actionLyricsRecogniserFragmentToPlayerFragment()
             findNavController().navigate(action)
         })
+        viewModel.errorEvent.observe(this, Observer {
+            progressDialog.hide()
+            showError(it.errorDescription)
+        })
         gameViewModel.gameOverEvent.observe(this, Observer {
             showGameResult(it)
         })
+    }
+
+    fun showError(errorMessage: String) {
+        AlertDialog.Builder(requireActivity())
+            .setMessage(errorMessage)
+            .setCancelable(true)
+            .show()
     }
 
     private fun showGameResult(gameResult: GameResult) {

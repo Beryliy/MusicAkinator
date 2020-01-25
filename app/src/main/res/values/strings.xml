@@ -7,4 +7,9 @@
     <string name="usersWin">User won pogchamp</string>
     <string name="appsWin">App won monkaS</string>
     <string name="progress">Round %1$d of %2$d</string>
+
+    <!--errors-->
+    <string name="noNetwork">No internet connection</string>
+    <string name="auddRequestsRunOut">Free requests to AuddIO API run out</string>
+    <string name="unknownError">Unknown error\ncode: %1$d\nmessage: %2$s</string>
 </resources>
