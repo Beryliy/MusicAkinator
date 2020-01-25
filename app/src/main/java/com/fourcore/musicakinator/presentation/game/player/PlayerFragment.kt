@@ -17,6 +17,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.deezer.sdk.model.PlayableEntity
 import com.deezer.sdk.player.TrackPlayer
+import com.deezer.sdk.player.event.PlayerState
 import com.deezer.sdk.player.event.PlayerWrapperListener
 
 import com.fourcore.musicakinator.R
@@ -96,7 +97,16 @@ class PlayerFragment : Fragment() {
 
     override fun onPause() {
         super.onPause()
-        trackPlayer.stop()
+        detachTrackPlayer()
+    }
+
+    private fun detachTrackPlayer() {
+        if (trackPlayer === null) return
+        if (trackPlayer.playerState == PlayerState.RELEASED) return
+        if(trackPlayer.playerState != PlayerState.STOPPED) {
+            trackPlayer.stop()
+        }
+        trackPlayer.release()
     }
 
     companion object {
