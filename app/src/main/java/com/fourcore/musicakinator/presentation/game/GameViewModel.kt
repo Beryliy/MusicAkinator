@@ -28,7 +28,7 @@ class GameViewModel @Inject constructor(
 
     fun declineTrackGuess() {
         answerEvent.call()
-        if(lyricRecogniserData.gameProgress <= numRounds) {
+        if(lyricRecogniserData.gameProgress < numRounds) {
             lyricRecogniserData.gameProgress++
         } else {
             gameOverEvent.value = GameResult.USERS_WIN

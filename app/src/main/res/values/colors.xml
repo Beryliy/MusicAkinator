@@ -10,5 +10,6 @@
     <color name="semiTransparentGrey">#99646464</color>
     <color name="colorSmoke">#B3000000</color>
     <color name="lightGrey">#686868</color>
+    <color name="grey">#474747</color>
     <color name="transparent">#00FFFFFF</color>
 </resources>

@@ -13,9 +13,4 @@ object AppProvideModule {
     @JvmStatic
     @Provides
     fun provideContext(application: Application): Context = application
-
-    @Singleton
-    @JvmStatic
-    @Provides
-    fun provideResourcesRepository(application: Application) = ResourcesRepository(application)
 }

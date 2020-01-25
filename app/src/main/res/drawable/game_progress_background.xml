@@ -9,6 +9,9 @@
                 android:height="@dimen/height_progress_bar_background" />
             <corners
                 android:radius="@dimen/progress_corner"/>
+            <stroke
+                android:width="@dimen/progress_background_border"
+                android:color="@color/grey"/>
             <solid
                 android:color="@color/lightGrey"/>
         </shape>
@@ -22,8 +25,10 @@
                 <size
                     android:height="@dimen/height_progress_bar_progress" />
                 <corners
-                    android:bottomLeftRadius="@dimen/progress_corner"
-                    android:topLeftRadius="@dimen/progress_corner"/>
+                    android:radius="@dimen/progress_corner" />
+                <stroke
+                    android:width="@dimen/progress_border"
+                    android:color="@color/transparent"/>
                 <solid
                     android:color="@color/orange"/>
             </shape>

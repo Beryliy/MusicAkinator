@@ -16,9 +16,11 @@
     <dimen name="height_rectangle_rounded_button">48dp</dimen>
 
     <!--game progress bar-->
-    <dimen name="height_progress_bar_background">44dp</dimen>
-    <dimen name="height_progress_bar_progress">48dp</dimen>
+    <dimen name="height_progress_bar_background">54dp</dimen>
+    <dimen name="height_progress_bar_progress">54dp</dimen>
     <dimen name="progress_corner">8dp</dimen>
+    <dimen name="progress_background_border">3dp</dimen>
+    <dimen name="progress_border">6dp</dimen>
 
     <!--navigation progress bar-->
     <dimen name="inner_radius_big">72dp</dimen>
@@ -26,7 +28,7 @@
     <dimen name="ring_thickness_upper_medium">9dp</dimen>
 
     <!--lyrics recogniser-->
-    <dimen name="height_game_progress_bar">48dp</dimen>
+    <dimen name="height_game_progress_bar">54dp</dimen>
     <dimen name="margin_top_lyrics_edit">24dp</dimen>
     <dimen name="margin_bottom_lyrics_edit">28dp</dimen>
 
