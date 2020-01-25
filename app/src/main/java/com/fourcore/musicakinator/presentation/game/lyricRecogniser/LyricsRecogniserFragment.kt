@@ -3,7 +3,6 @@ package com.fourcore.musicakinator.presentation.game.lyricRecogniser
 import android.app.AlertDialog
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,7 +15,7 @@ import androidx.navigation.fragment.findNavController
 import com.fourcore.musicakinator.R
 import com.fourcore.musicakinator.databinding.FragmentLyricsRecogniserBinding
 import com.fourcore.musicakinator.domain.GameResult
-import com.fourcore.musicakinator.domain.TrackShortData
+import com.fourcore.musicakinator.network.pojo.Result
 import com.fourcore.musicakinator.presentation.BaseFragment
 import com.fourcore.musicakinator.presentation.dialog.ProgressDialog
 import com.fourcore.musicakinator.presentation.dialog.ResultDialog
@@ -67,6 +66,7 @@ class LyricsRecogniserFragment : BaseFragment() {
             findNavController().navigate(action)
         })
         viewModel.trackSoundNotFoundEvent.observe(this, Observer {
+            progressDialog.hide()
             showTrackData(it)
         })
         viewModel.errorEvent.observe(this, Observer {
@@ -78,7 +78,7 @@ class LyricsRecogniserFragment : BaseFragment() {
         })
     }
 
-    private fun showTrackData(trackShortData: TrackShortData) {
+    private fun showTrackData(trackShortData: Result) {
         AlertDialog.Builder(requireActivity())
             .setMessage(resources.getString(
                 R.string.trackSoundNotFound,

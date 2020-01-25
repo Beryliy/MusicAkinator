@@ -9,7 +9,7 @@ sealed class DataResult<out T : Any> {
     override fun toString(): String {
         return when(this) {
             is DataSuccess -> "Result.Success: ${this.data}"
-            is DataError -> "Result.Error: ${this.exception}"
+            is DataError -> "Result.AkinatorError: ${this.exception}"
         }
     }
 }

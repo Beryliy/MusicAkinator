@@ -1,5 +1,6 @@
 package com.fourcore.musicakinator.presentation.game.lyricRecogniser
 
+import android.util.Log
 import com.deezer.sdk.model.Track
 import com.deezer.sdk.network.connect.DeezerConnect
 import com.deezer.sdk.network.request.DeezerRequestFactory
@@ -8,8 +9,8 @@ import com.deezer.sdk.network.request.event.JsonRequestListener
 import com.fourcore.musicakinator.R
 import com.fourcore.musicakinator.SingleLiveEvent
 import com.fourcore.musicakinator.di.FragmentScope
-import com.fourcore.musicakinator.domain.TrackShortData
 import com.fourcore.musicakinator.global.proxy.ResourcesRepository
+import com.fourcore.musicakinator.network.pojo.Result
 import com.fourcore.musicakinator.network.repository.FindLyricsRepository
 import com.fourcore.musicakinator.presentation.BaseViewModel
 import com.fourcore.musicakinator.presentation.error.AkinatorError
@@ -29,7 +30,7 @@ class LyricsRecogniserViewModel @Inject constructor(
     lateinit var gameViewModel: GameViewModel
     val songRecognisedEvent = SingleLiveEvent<Unit>()
     val showProgressEvent = SingleLiveEvent<Unit>()
-    val trackSoundNotFoundEvent = SingleLiveEvent<TrackShortData>()
+    val trackSoundNotFoundEvent = SingleLiveEvent<Result>()
     val errorEvent = SingleLiveEvent<AkinatorError>()
 
     fun bindGameViewModel(gameViewModel: GameViewModel) {
@@ -48,7 +49,9 @@ class LyricsRecogniserViewModel @Inject constructor(
                             AkinatorError(resourcesRepository.getString(R.string.lyricsWasntRecognised))
                         )
                     } else {
-                        val trackInfo = auddIOResponse.result.first()
+                        val trackInfo = extractTrack(auddIOResponse.result)
+                        gameViewModel.tracksHistory += trackInfo
+                        Log.d(TAG, "${trackInfo.title} ${trackInfo.artist}")
                         val query = "${trackInfo.title} ${trackInfo.artist}"
                         val deezerRequest = DeezerRequestFactory.requestSearchTracks(
                             query,
@@ -60,9 +63,7 @@ class LyricsRecogniserViewModel @Inject constructor(
                                 override fun onResult(result: Any?, requestId: Any?) {
                                     val tracks = result as List<Track>
                                     if(tracks.isEmpty()){
-                                        trackSoundNotFoundEvent.postValue(
-                                            TrackShortData(trackInfo.title, trackInfo.artist)
-                                        )
+                                        trackSoundNotFoundEvent.postValue(trackInfo)
                                     } else {
                                         gameViewModel.trackLivaData.postValue(tracks.first())
                                         songRecognisedEvent.call()
@@ -110,6 +111,13 @@ class LyricsRecogniserViewModel @Inject constructor(
                 )
             }
         }
+    }
+
+    private fun extractTrack(tracks: List<Result>): Result {
+        tracks.forEach {
+            if (!gameViewModel.tracksHistory.contains(it)) return it
+        }
+        return tracks.first()
     }
 
     companion object {

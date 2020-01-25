@@ -67,8 +67,8 @@
     </style>
     
     <style name="NavigationProgressBar">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">@dimen/width_progress</item>
+        <item name="android:layout_height">@dimen/height_progress</item>
         <item name="android:indeterminateDrawable">@drawable/imposed_rings</item>
     </style>
 
@@ -78,9 +78,5 @@
     <style name="ProgressDialog" parent="Theme.AppCompat.Dialog">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
-        <!-- No backgrounds, titles or window float -->
-        <item name="android:windowBackground">@null</item>
-        <item name="android:windowNoTitle">true</item>
-        <item name="android:windowIsFloating">false</item>
     </style>
 </resources>
