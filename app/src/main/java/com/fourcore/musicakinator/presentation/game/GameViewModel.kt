@@ -27,6 +27,7 @@ class GameViewModel @Inject constructor(
         answerEvent.call()
         gameOverEvent.value = GameResult.APPS_WIN
         tracksHistory.clear()
+        lyricRecogniserData.lyrics = ""
     }
 
     fun declineTrackGuess() {
@@ -41,6 +42,7 @@ class GameViewModel @Inject constructor(
             gameOverEvent.value = GameResult.USERS_WIN
             lyricRecogniserData.gameProgress = 1
             tracksHistory.clear()
+            lyricRecogniserData.lyrics = ""
         }
     }
 }
